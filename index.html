@@ -198,11 +198,6 @@
         .category-pill i {
             font-size: 0.7rem;
         }
-        .category-pill .count {
-            opacity: 0.5;
-            font-size: 0.6rem;
-            margin-left: 2px;
-        }
 
         /* ─── JOKE GRID ─── */
         .joke-grid {
@@ -720,6 +715,9 @@
             </div>
         </header>
 
+        <!-- TOP CATEGORY PILLS -->
+        <div class="category-strip" id="topCategories"></div>
+
         <!-- JOKE GRID -->
         <div class="joke-grid" id="jokeGrid"></div>
 
@@ -730,23 +728,14 @@
         </div>
 
         <!-- BOTTOM CATEGORIES -->
-        <div class="bottom-categories" id="bottomCategories">
-            <button class="cat-badge-lg active" data-cat="all"><i class="fas fa-globe"></i> All</button>
-            <button class="cat-badge-lg" data-cat="general"><i class="fas fa-laugh"></i> General</button>
-            <button class="cat-badge-lg" data-cat="dad"><i class="fas fa-user-tie"></i> Dad</button>
-            <button class="cat-badge-lg" data-cat="dark"><i class="fas fa-skull"></i> Dark</button>
-            <button class="cat-badge-lg" data-cat="food"><i class="fas fa-utensils"></i> Food</button>
-            <button class="cat-badge-lg" data-cat="kids"><i class="fas fa-child"></i> Kids</button>
-            <button class="cat-badge-lg" data-cat="programming"><i class="fas fa-code"></i> Programming</button>
-            <button class="cat-badge-lg" data-cat="romantic"><i class="fas fa-heart"></i> Romantic</button>
-            <button class="cat-badge-lg dirty" data-cat="adult"><i class="fas fa-user-secret"></i> Dirty (18+)</button>
-        </div>
+        <div class="bottom-categories" id="bottomCategories"></div>
 
     </div>
 
     <script>
         // ═══════════════════════════════════════════════════════════════
         //  1. JOKE DATABASE — English only, all categories
+        //     Merged from original + new additions (animal, school, work)
         // ═══════════════════════════════════════════════════════════════
 
         const JOKES = {
@@ -968,6 +957,30 @@
                 { id: 'g214', text: "What do you call an alligator in a vest? An investigator." },
                 { id: 'g215', text: "What did the corn say when it was asked a question? 'I'm stumped.'" },
                 { id: 'g216', text: "Why do birds fly south for the winter? Because it's too far to walk." },
+                { id: 'g217', text: "What do you call a cow with a broken leg? Hamburger helper." },
+                { id: 'g218', text: "Why did the man put his money in the blender? He wanted to make some liquid assets." },
+                { id: 'g219', text: "What's a tree's favorite drink? Root beer." },
+                { id: 'g220', text: "Why did the picture go to jail? Because it was framed." },
+                { id: 'g221', text: "What do you call a sleeping dinosaur? A dino-snore." },
+                { id: 'g222', text: "Why did the banana go to the doctor? He wasn't peeling well." },
+                { id: 'g223', text: "What's a computer's favorite snack? Microchips." },
+                { id: 'g224', text: "Why did the man put his clock in the oven? He wanted to have a hot time." },
+                { id: 'g225', text: "What do you call a lazy bee? A buzz-off." },
+                { id: 'g226', text: "Why did the student eat his homework? Because his teacher told him it was a piece of cake." },
+                { id: 'g227', text: "What's the best way to catch a fish? Have someone throw it to you." },
+                { id: 'g228', text: "Why did the boy throw his watch out the window? He wanted to see time fly." },
+                { id: 'g229', text: "What do you call a bear that's a good dancer? A boogie bear." },
+                { id: 'g230', text: "Why did the man put his shoes in the freezer? He wanted to have cold feet." },
+                { id: 'g231', text: "What's a frog's favorite game? Leapfrog." },
+                { id: 'g232', text: "Why did the girl put her lipstick on the refrigerator? She wanted to make a cold face." },
+                { id: 'g233', text: "What do you call a cow that's a good dancer? A moo-ver." },
+                { id: 'g234', text: "Why did the man put his hat on the bed? He wanted to have a hat nap." },
+                { id: 'g235', text: "What's the best thing about a train? It's a track record." },
+                { id: 'g236', text: "Why did the boy put his money in the bank? He wanted to make a deposit." },
+                { id: 'g237', text: "What do you call a dog that's a good singer? A barking tenor." },
+                { id: 'g238', text: "Why did the girl put her shoes on her hands? She wanted to have a handshake." },
+                { id: 'g239', text: "What's a cat's favorite song? 'Meow-t it be love?'" },
+                { id: 'g240', text: "Why did the man put his keys in the fridge? He wanted to have a cold key." },
             ],
 
             dad: [
@@ -1188,6 +1201,240 @@
                 { id: 'd215', text: "What do you call an alligator in a vest? An investigator." },
                 { id: 'd216', text: "What did the corn say when it was asked a question? 'I'm stumped.'" },
                 { id: 'd217', text: "Why do birds fly south for the winter? Because it's too far to walk." },
+                { id: 'd218', text: "I used to hate math, but then I realized it's the only subject where you can find X." },
+                { id: 'd219', text: "Why did the man put his watch in the blender? He wanted to make some time smoothie." },
+                { id: 'd220', text: "What do you call a fish that's a doctor? A sturgeon." },
+                { id: 'd221', text: "Why did the boy put his homework in the freezer? He wanted to have a cool assignment." },
+                { id: 'd222', text: "What's a frog's favorite music? Hip hop." },
+                { id: 'd223', text: "Why did the man put his phone in the fridge? He wanted to have a cold call." },
+                { id: 'd224', text: "What do you call a cow that's a good pilot? A moo-copter." },
+                { id: 'd225', text: "Why did the girl put her makeup on the table? She wanted to have a face lift." },
+                { id: 'd226', text: "What's the best thing about a train? It's a track star." },
+                { id: 'd227', text: "Why did the boy put his toys in the oven? He wanted to have a hot wheel." },
+                { id: 'd228', text: "What do you call a dog that's a good detective? A sniff-vestigator." },
+                { id: 'd229', text: "Why did the man put his keys in the blender? He wanted to have a key shake." },
+                { id: 'd230', text: "What's a cat's favorite TV show? 'The Meow-dy Show.'" },
+            ],
+
+            animal: [
+                { id: 'a1', text: "Why don't elephants use computers? They're afraid of the mouse." },
+                { id: 'a2', text: "What did the cat say to the mouse? 'You look delicious.'" },
+                { id: 'a3', text: "Why did the dog sit in the shade? Because he didn't want to be a hot dog." },
+                { id: 'a4', text: "What do you call a cat that can fly? A cat-copter." },
+                { id: 'a5', text: "Why are dogs bad at telling secrets? Because they always spill the beans." },
+                { id: 'a6', text: "What did the dog say to the tree? 'Bark.'" },
+                { id: 'a7', text: "Why did the frog call his insurance company? He had a toad-ally accident." },
+                { id: 'a8', text: "What do you get when you cross a snake and a mouse? A mouse trap." },
+                { id: 'a9', text: "Why don't cats like playing cards? Because they hate the deck." },
+                { id: 'a10', text: "What do you call a sleeping bull? A bulldozer." },
+                { id: 'a11', text: "Why did the cow go to the doctor? It had a moo-d." },
+                { id: 'a12', text: "Why did the lion break up with his girlfriend? She was a cheetah." },
+                { id: 'a13', text: "What do you call a cow that can't stop eating? A pasture-izer." },
+                { id: 'a14', text: "What do you call a pig that can see? A pork-sighted." },
+                { id: 'a15', text: "What do you call a cow that has a strong opinion? A moo-slim." },
+                { id: 'a16', text: "Why did the chicken go to the seance? To talk to the other side." },
+                { id: 'a17', text: "What do you call a dog that can do magic? A labracadabrador." },
+                { id: 'a18', text: "Why don't sharks like fast food? Because they can't catch it." },
+                { id: 'a19', text: "What do you call a bear with no teeth? A gummy bear." },
+                { id: 'a20', text: "Why did the elephant paint his toenails red? So he could hide in a cherry tree." },
+                { id: 'a21', text: "Why are elephants so wrinkly? Because they can't fit in the ironing board." },
+                { id: 'a22', text: "What do you call a pig that knows karate? A pork chop." },
+                { id: 'a23', text: "What's a snake's favorite subject? Hiss-tory." },
+                { id: 'a24', text: "What did the fish say when it swam into a wall? 'Dam.'" },
+                { id: 'a25', text: "What do you call a cow with a lot of money? A rich cow." },
+                { id: 'a26', text: "Why are frogs so happy? Because they eat whatever bugs them." },
+                { id: 'a27', text: "What's a cat's favorite movie? The Purr-fect Storm." },
+                { id: 'a28', text: "Why did the man throw the clock out the window? He wanted to see time fly." },
+                { id: 'a29', text: "What do you call a rabbit that's been in a fight? A hare-lip." },
+                { id: 'a30', text: "What do you call a cow with a twitch? A beef jerky." },
+                { id: 'a31', text: "Why do cows moo? Because they have no other language." },
+                { id: 'a32', text: "What do you call a lion that can't stop singing? A roar-singer." },
+                { id: 'a33', text: "Why did the duck go to the doctor? He had a mallard." },
+                { id: 'a34', text: "What do you call a sheep with no legs? A cloud." },
+                { id: 'a35', text: "Why did the dog cross the road? To get to the fire hydrant." },
+                { id: 'a36', text: "What do you get when you cross a dog and a computer? A lot of byte." },
+                { id: 'a37', text: "Why did the elephant paint his face red? To hide in the red bush." },
+                { id: 'a38', text: "What do you call a penguin in a desert? Lost." },
+                { id: 'a39', text: "Why did the cat join the band? Because he wanted to be a purr-cussionist." },
+                { id: 'a40', text: "What do you call a whale that plays the trumpet? A beluga." },
+                { id: 'a41', text: "Why do cows wear bells? Because their horns don't work." },
+                { id: 'a42', text: "What do you call a pig that's afraid of the dark? A pork-o-phobe." },
+                { id: 'a43', text: "What did the cat say to the fish? 'You're my sole mate.'" },
+                { id: 'a44', text: "Why did the snake refuse to eat? He was on a diet." },
+                { id: 'a45', text: "What do you call a cow with a great sense of humor? A moo-sician." },
+                { id: 'a46', text: "Why did the rabbit go to the doctor? He had a hare-lip." },
+                { id: 'a47', text: "What do you call a cow that's always in a bad mood? A sour-moo." },
+                { id: 'a48', text: "Why did the dog go to the eye doctor? He was seeing spots." },
+                { id: 'a49', text: "What do you call a penguin that's a spy? A secret agent." },
+                { id: 'a50', text: "Why did the cow cross the road? To get to the udder side." },
+                { id: 'a51', text: "What do you call a cat that's always cold? A frigid feline." },
+                { id: 'a52', text: "What did the mother cow say to the baby cow? 'It's pasture bedtime.'" },
+                { id: 'a53', text: "Why did the elephant get kicked out of the pool? He couldn't stop doing the backstroke." },
+                { id: 'a54', text: "What do you call a snake that can build things? A boa constructor." },
+                { id: 'a55', text: "Why are skunks so good at parties? Because they can make a stink." },
+                { id: 'a56', text: "What do you call a shark that's a good lawyer? A great white." },
+                { id: 'a57', text: "Why did the dog sit in the sun? Because he wanted to be a hot dog." },
+                { id: 'a58', text: "What do you call a pig that's in a good mood? A happy porker." },
+                { id: 'a59', text: "Why did the cat go to the bank? He wanted to make a transaction." },
+                { id: 'a60', text: "What do you call a bear that's good at math? A calcula-bear." },
+                { id: 'a61', text: "Why did the horse go to the doctor? He had a hay fever." },
+                { id: 'a62', text: "What do you call a sheep that's been in a car accident? A baa-d driver." },
+                { id: 'a63', text: "Why did the chicken join the circus? To see the other side of the fence." },
+                { id: 'a64', text: "What do you call a cow that's a great singer? A moo-ber." },
+                { id: 'a65', text: "Why did the snake go to the bar? He was feeling a little tight." },
+                { id: 'a66', text: "What do you call a sleeping dog? A pizza." },
+                { id: 'a67', text: "Why did the cat cross the road? To get to the litter box." },
+                { id: 'a68', text: "What do you call a cow with a microchip? A moo-tern." },
+                { id: 'a69', text: "Why did the rabbit stop running? He ran out of hare." },
+                { id: 'a70', text: "What do you call a snake that's good at math? A Pythagorean viper." },
+                { id: 'a71', text: "Why did the cow get a ticket? He was caught speeding." },
+                { id: 'a72', text: "What do you call a dog that's a great dancer? A rhythm dog." },
+                { id: 'a73', text: "Why did the sheep go to the doctor? He had a tick." },
+                { id: 'a74', text: "What do you call a fish that can play the piano? A tun-a." },
+                { id: 'a75', text: "Why did the lion run away? He saw the zoo." },
+                { id: 'a76', text: "What do you call a cow that's a good listener? A moo-sician." },
+                { id: 'a77', text: "Why did the cat get lost? He didn't have a map." },
+                { id: 'a78', text: "What do you call a fish that's a philosopher? A deep-sea thinker." },
+                { id: 'a79', text: "Why did the dog paint his house red? He wanted a blue house." },
+                { id: 'a80', text: "What do you call a bear that's a star? A movie bear." },
+                { id: 'a81', text: "Why did the frog jump into the pond? He was feeling toad-ally depressed." },
+                { id: 'a82', text: "What do you call a cow that's a pilot? A moo-copter." },
+                { id: 'a83', text: "Why did the chicken go to the school? To get a leg up." },
+                { id: 'a84', text: "What do you call a snake that's a good actor? A boa star." },
+                { id: 'a85', text: "Why did the dog bark at the moon? He was a lunatic." },
+                { id: 'a86', text: "What do you call a cow that's always in a hurry? A moo-ver." },
+                { id: 'a87', text: "Why did the cat sit on the computer? He wanted to catch a mouse." },
+                { id: 'a88', text: "What do you call a pig that's a good storyteller? A porker of the tale." },
+                { id: 'a89', text: "Why did the duck get a ticket? He was caught quacking." },
+                { id: 'a90', text: "What do you call a dog that's a great listener? A dog-ucator." },
+                { id: 'a91', text: "Why did the horse go to the bar? He had a hoof problem." },
+                { id: 'a92', text: "What do you call a cow that's a great cook? A moo-chef." },
+                { id: 'a93', text: "Why did the lion stop eating cows? He was full." },
+                { id: 'a94', text: "What do you call a snake that's a good lawyer? A boa attorney." },
+                { id: 'a95', text: "Why did the cat play the piano? He wanted to catch a mouse." },
+                { id: 'a96', text: "What do you call a fish that's a great musician? A scale." },
+                { id: 'a97', text: "Why did the dog chase his tail? He was trying to catch a squirrel." },
+                { id: 'a98', text: "What do you call a pig that's a great dancer? A porker of the floor." },
+                { id: 'a99', text: "Why did the sheep get a haircut? He wanted to be a little lamb." },
+                { id: 'a100', text: "What do you call a cat that's a great singer? A meow-sic." },
+                { id: 'a101', text: "Why did the elephant sit on the marshmallow? He wanted to make a s'more." },
+                { id: 'a102', text: "What do you call a fish with a bad attitude? A bass-tard." },
+                { id: 'a103', text: "Why did the cow jump over the moon? The farmer had a good arm." },
+                { id: 'a104', text: "What do you call a bear that's always happy? A grizzly grin." },
+                { id: 'a105', text: "Why did the snake get a ticket? He was caught hissing." },
+            ],
+
+            adult: [
+                { id: 'ad1', text: "Why do men find it difficult to make eye contact? Because breasts don't have eyes." },
+                { id: 'ad2', text: "What's the difference between a G-spot and a golf ball? A guy will actually spend 20 minutes looking for a golf ball." },
+                { id: 'ad3', text: "What do you call a woman who knows where her husband is at all times? A widow." },
+                { id: 'ad4', text: "What does a gynecologist and a photographer have in common? They both get to develop their own negatives." },
+                { id: 'ad5', text: "Why do men like to watch porn? It's the only time they get to see a woman who can't stop staring at their face." },
+                { id: 'ad6', text: "Why did the woman divorce her husband? Because he kept putting the toilet seat down." },
+                { id: 'ad7', text: "What's the difference between a husband and a boyfriend? 30 minutes." },
+                { id: 'ad8', text: "What's the difference between a man and a pub? A pub will stop serving you at 11 PM." },
+                { id: 'ad9', text: "Why did the man bring a ladder to the bar? He heard the drinks were on the house." },
+                { id: 'ad10', text: "What do you call a man who can't stand? A disappointment." },
+                { id: 'ad11', text: "What's a woman's favorite kind of man? A man with a job." },
+                { id: 'ad12', text: "Why don't men like to ask for directions? Because they already know everything." },
+                { id: 'ad13', text: "What's the longest time a man can last? 9 months, until the baby is born." },
+                { id: 'ad14', text: "Why do women live longer than men? Because they have more experience dealing with pain." },
+                { id: 'ad15', text: "What do you call a man who's always right? A bachelor." },
+                { id: 'ad16', text: "Why did the woman cross the road? She didn't, she was already on the other side." },
+                { id: 'ad17', text: "What do you call a woman who's an expert at filing? A secretary." },
+                { id: 'ad18', text: "What did the man say to his wife when she asked him to take out the trash? 'I'll do it tomorrow.'" },
+                { id: 'ad19', text: "Why do men like cars? Because they can fix them." },
+                { id: 'ad20', text: "Why did the man bring a map to the bedroom? He wanted to find the clitoris." },
+                { id: 'ad21', text: "What's the difference between a man and a wheel? The wheel doesn't squeak." },
+                { id: 'ad22', text: "Why did the man get a divorce? Because he liked his wife too much to stay." },
+                { id: 'ad23', text: "What do you call a woman who's always angry? A wife." },
+                { id: 'ad24', text: "Why did the man bring a stopwatch to the bedroom? He wanted to see how long he could last." },
+                { id: 'ad25', text: "Why do men have such a hard time understanding women? They speak two different languages." },
+                { id: 'ad26', text: "What's the difference between a man and a woman? A man will pay $2 for a $1 item he wants. A woman will pay $1 for a $2 item she doesn't want." },
+                { id: 'ad27', text: "Why did the man stare at the can of orange juice? Because it said 'concentrate'." },
+                { id: 'ad28', text: "Why do women talk so much? They have to, to keep up with the men." },
+                { id: 'ad29', text: "What do you call a man who can't stop talking? A woman." },
+                { id: 'ad30', text: "Why did the man go to the doctor? He was feeling a little bit dirty." },
+                { id: 'ad31', text: "What's a man's definition of foreplay? The 10 minutes before the 5 minutes of sex." },
+                { id: 'ad32', text: "Why did the woman take her husband to the bar? Because he needed a drink." },
+                { id: 'ad33', text: "What do you call a man who's always tired? A father." },
+                { id: 'ad34', text: "Why do men like to play video games? Because it's the only time they can control something." },
+                { id: 'ad35', text: "What's the difference between a man and a baby? A baby eventually stops crying." },
+                { id: 'ad36', text: "Why did the man get a promotion? Because he was the only one who knew how to use the coffee machine." },
+                { id: 'ad37', text: "What do you call a woman who's a great listener? Married." },
+                { id: 'ad38', text: "Why do men hate being wrong? Because they never are." },
+                { id: 'ad39', text: "What's a man's favorite word? 'Yes'." },
+                { id: 'ad40', text: "Why did the woman slap the man? Because he was trying to understand her." },
+                { id: 'ad41', text: "What's the difference between a man and a couch? A couch doesn't ask for sex every night." },
+                { id: 'ad42', text: "Why don't men listen? Because they're too busy thinking about themselves." },
+                { id: 'ad43', text: "What do you call a man who's a good listener? A unicorn." },
+                { id: 'ad44', text: "Why did the man bring a ladder to the bar? He heard the drinks were on the house." },
+                { id: 'ad45', text: "What's a woman's favorite thing about a man? His wallet." },
+                { id: 'ad46', text: "Why did the man cross the road? He was trying to get to the other side of the bar." },
+                { id: 'ad47', text: "What do you call a man who's a great cook? A chef." },
+                { id: 'ad48', text: "Why do men like to be alone? Because they're thinking about important things." },
+                { id: 'ad49', text: "What's the difference between a man and a woman? A woman can do everything a man can do, except in heels." },
+                { id: 'ad50', text: "Why did the woman leave her husband? He kept forgetting her birthday." },
+                { id: 'ad51', text: "Why do men hate shopping? Because they have to try things on." },
+                { id: 'ad52', text: "What do you call a woman who's a great business woman? A CEO." },
+                { id: 'ad53', text: "Why did the man stop listening? He was already tuning out." },
+                { id: 'ad54', text: "What's the difference between a man and a puppy? A puppy will eventually stop chewing on your shoes." },
+                { id: 'ad55', text: "Why did the woman get a dog? She wanted a man who would listen to her." },
+                { id: 'ad56', text: "What do you call a man who's always right? A problem." },
+                { id: 'ad57', text: "Why did the man bring a map to the bedroom? He wanted to find the clitoris." },
+                { id: 'ad58', text: "What's the difference between a man and a woman? A man will buy a $500 suit for $300." },
+                { id: 'ad59', text: "Why do women hate men? Because they don't listen." },
+                { id: 'ad60', text: "What do you call a woman who's a great driver? A woman." },
+                { id: 'ad61', text: "Why did the man get a divorce? He wasn't satisfied." },
+                { id: 'ad62', text: "What's a man's favorite position? On the couch watching TV." },
+                { id: 'ad63', text: "Why do men like to watch sports? Because it's the only time they can yell at the TV." },
+                { id: 'ad64', text: "What do you call a woman who's a great cook? A wife." },
+                { id: 'ad65', text: "Why did the woman leave her husband? Because he wouldn't stop talking." },
+                { id: 'ad66', text: "What's the difference between a man and a baby? A baby will eventually grow up." },
+                { id: 'ad67', text: "Why do men like to play golf? Because they can't talk while playing." },
+                { id: 'ad68', text: "What do you call a man who's a great lover? A myth." },
+                { id: 'ad69', text: "Why did the man go to the bar? He wanted to get a drink." },
+                { id: 'ad70', text: "What's a woman's favorite thing about a man? His muscles." },
+                { id: 'ad71', text: "Why did the man get a tattoo? He wanted to get a permanent reminder." },
+                { id: 'ad72', text: "What do you call a woman who's a great writer? A novelist." },
+                { id: 'ad73', text: "Why did the man stop talking? He was finished." },
+                { id: 'ad74', text: "What's the difference between a man and a woman? A man will always try to fix things." },
+                { id: 'ad75', text: "Why do women like flowers? Because they die." },
+                { id: 'ad76', text: "What do you call a man who's a great dancer? A show-off." },
+                { id: 'ad77', text: "Why did the woman get a divorce? She was tired of being right all the time." },
+                { id: 'ad78', text: "What's a man's favorite thing about a woman? Her silence." },
+                { id: 'ad79', text: "Why do men like to fish? Because they can be alone." },
+                { id: 'ad80', text: "What do you call a woman who's a great athlete? A champion." },
+                { id: 'ad81', text: "Why did the man get a job? He needed money." },
+                { id: 'ad82', text: "What's the difference between a man and a woman? A woman will always ask for directions." },
+                { id: 'ad83', text: "Why do men hate shopping? Because they have to carry the bags." },
+                { id: 'ad84', text: "What do you call a man who's a great singer? A pop star." },
+                { id: 'ad85', text: "Why did the woman leave her husband? Because he wouldn't take out the trash." },
+                { id: 'ad86', text: "What's a woman's favorite thing about a man? His sense of humor." },
+                { id: 'ad87', text: "Why do men like to watch movies? Because they can relate to the action." },
+                { id: 'ad88', text: "What do you call a woman who's a great singer? A diva." },
+                { id: 'ad89', text: "Why did the man get a pet? He wanted a companion." },
+                { id: 'ad90', text: "What's the difference between a man and a woman? A woman will always have the last word." },
+                { id: 'ad91', text: "Why do women like to talk? Because they have to keep up with the men." },
+                { id: 'ad92', text: "What do you call a man who's a great writer? A poet." },
+                { id: 'ad93', text: "Why did the man get a divorce? He couldn't stand the pressure." },
+                { id: 'ad94', text: "What's a man's favorite thing about a woman? Her cooking." },
+                { id: 'ad95', text: "Why do men like to play poker? Because they can bluff." },
+                { id: 'ad96', text: "What do you call a woman who's a great lawyer? A judge." },
+                { id: 'ad97', text: "Why did the woman leave her husband? Because he wouldn't stop watching TV." },
+                { id: 'ad98', text: "What's the difference between a man and a woman? A woman will always notice the details." },
+                { id: 'ad99', text: "Why do men like to argue? Because they like to be right." },
+                { id: 'ad100', text: "What do you call a man who's a great cook? A chef." },
+                { id: 'ad101', text: "Why do men stare at their phones? Because they're waiting for a text from a woman." },
+                { id: 'ad102', text: "What's the difference between a woman and a cat? A cat doesn't pretend to like you." },
+                { id: 'ad103', text: "Why did the man put his wallet in the freezer? He wanted cold hard cash." },
+                { id: 'ad104', text: "What do you call a woman who knows everything? A wife." },
+                { id: 'ad105', text: "Why do men have more hair on their chest? To keep their wives warm." },
+                { id: 'ad106', text: "What's the difference between a man and a woman? A woman can have children, a man can't." },
+                { id: 'ad107', text: "Why did the man get a dog? He wanted a loyal friend." },
+                { id: 'ad108', text: "What do you call a woman who's always right? A husband's nightmare." },
+                { id: 'ad109', text: "Why do men like to be alone? They need to think." },
+                { id: 'ad110', text: "What's the difference between a man and a woman? A woman will always win an argument." },
             ],
 
             dark: [
@@ -1291,206 +1538,106 @@
                 { id: 'dk98', text: "What do you call a pile of cats? A meow-ntain." },
                 { id: 'dk99', text: "What is a ghost's favorite drink? Boo-berry juice." },
                 { id: 'dk100', text: "What did the lint say to the dryer? 'I'll be hanging around.'" },
-                { id: 'dk101', text: "I have a joke about death, but it's a bit morbid." },
-                { id: 'dk102', text: "I'm reading a book about the Titanic. It's a real page-turner." },
-                { id: 'dk103', text: "My girlfriend left me because she said I was too depressed. That was the most uplifting thing she's ever said to me." },
-                { id: 'dk104', text: "I'm not afraid of death. I just don't want to be there when it happens." },
-                { id: 'dk105', text: "I told my wife she should embrace her mistakes. She gave me a hug." },
-                { id: 'dk106', text: "I used to play piano by ear. Now I just use my fingers." },
-                { id: 'dk107', text: "What's the difference between a G-spot and a golf ball? A guy will actually spend 20 minutes looking for a golf ball." },
-                { id: 'dk108', text: "Why did the man put his money in the freezer? He wanted cold hard cash." },
-                { id: 'dk109', text: "What do you call a guy with a rubber toe? Roberto." },
-                { id: 'dk110', text: "My favorite thing about my job is the people. They're all fictional." },
-                { id: 'dk111', text: "What's the best thing about Switzerland? I don't know, but the flag is a big plus." },
-                { id: 'dk112', text: "I'm terrified of elevators. I'm going to start taking steps to avoid them." },
-                { id: 'dk113', text: "What do you call a fake noodle? An impasta." },
-                { id: 'dk114', text: "Why did the scarecrow win an award? He was outstanding in his field." },
-                { id: 'dk115', text: "What's green and has wheels? Grass. I lied about the wheels." },
-                { id: 'dk116', text: "How do you make holy water? You boil the hell out of it." },
-                { id: 'dk117', text: "Why don't scientists trust atoms? Because they make up everything." },
-                { id: 'dk118', text: "What do you call a fish with no eyes? Fsh." },
-                { id: 'dk119', text: "Why don't eggs tell jokes? They'd crack each other up." },
-                { id: 'dk120', text: "What do you call a bear with no teeth? A gummy bear." },
-                { id: 'dk121', text: "Why did the bicycle fall over? Because it was two-tired." },
-                { id: 'dk122', text: "I'm on a seafood diet. I see food and I eat it." },
-                { id: 'dk123', text: "What's orange and sounds like a parrot? A carrot." },
-                { id: 'dk124', text: "Why did the math book look so sad? Because it had too many problems." },
-                { id: 'dk125', text: "I'm reading a book on anti-gravity. It's impossible to put down." },
-                { id: 'dk126', text: "Did you hear about the guy who invented Lifesavers? They say he made a mint." },
-                { id: 'dk127', text: "What's the difference between a hippo and a zippo? One is really heavy, the other is a little lighter." },
-                { id: 'dk128', text: "What's brown and sticky? A stick." },
-                { id: 'dk129', text: "How does the moon cut his hair? Eclipse it." },
-                { id: 'dk130', text: "Why don't skeletons fight each other? They don't have the guts." },
-                { id: 'dk131', text: "I'm not a big fan of stairs. They're always up to something." },
-                { id: 'dk132', text: "Why can't you hear a pterodactyl go to the bathroom? Because the P is silent." },
-                { id: 'dk133', text: "Where do you find giant snails? On the ends of giant dogs' leashes." },
-                { id: 'dk134', text: "Why did the golfer change his clothes? He got a hole in one." },
-                { id: 'dk135', text: "I used to think I was indecisive, but now I'm not so sure." },
-                { id: 'dk136', text: "What do you call a fat psychic? A four-chin teller." },
-                { id: 'dk137', text: "What do you call a boomerang that doesn't come back? A stick." },
-                { id: 'dk138', text: "What do you call a nun who sleepwalks? A roamin' Catholic." },
-                { id: 'dk139', text: "What do you call a droid that takes the long way around? R2-Detour." },
-                { id: 'dk140', text: "What do you call a singing laptop? A Dell." },
-                { id: 'dk141', text: "What did the grape say when it got stepped on? Nothing, it just let out a little wine." },
-                { id: 'dk142', text: "What did the left eye say to the right eye? Between us, something smells." },
-                { id: 'dk143', text: "Why did the tomato turn red? Because it saw the salad dressing!" },
-                { id: 'dk144', text: "What do you call a pig that does karate? A pork chop!" },
-                { id: 'dk145', text: "Why was the broom late? It swept in!" },
-                { id: 'dk146', text: "Why did the chicken go to the seance? To talk to the other side!" },
-                { id: 'dk147', text: "Why do potatoes make good detectives? Because they keep their eyes peeled!" },
-                { id: 'dk148', text: "What's red and bad for your teeth? A brick." },
-                { id: 'dk149', text: "What do you call a nun who's acting very aggressive? A nun-chuck." },
-                { id: 'dk150', text: "Why did the man put his money in the freezer? He wanted cold hard cash." },
-                { id: 'dk151', text: "What's a cow's favorite type of math? Cows-culus." },
-                { id: 'dk152', text: "What did the mother cow say to the baby cow? It's pasture bedtime." },
-                { id: 'dk153', text: "Why did the invisible man turn down the job offer? He couldn't see himself doing it." },
-                { id: 'dk154', text: "How do you make a tissue dance? You put a little boogie in it." },
-                { id: 'dk155', text: "Why don't scientists trust stairs? Because they're always up to something." },
-                { id: 'dk156', text: "What do you call a bee that can't make up its mind? A maybe." },
-                { id: 'dk157', text: "What's a pirate's favorite letter? You'd think it's R, but it's the C." },
-                { id: 'dk158', text: "What did the zero say to the eight? Nice belt." },
-                { id: 'dk159', text: "Why did the bald man put a rabbit on his head? Because he wanted a hare piece." },
-                { id: 'dk160', text: "What do you call a bear with no socks on? Barefoot." },
-                { id: 'dk161', text: "What do you call a pig that does yoga? A porker." },
-                { id: 'dk162', text: "What did the mother say to her son after he ate a whole pizza? 'That's a lot of dough!'" },
-                { id: 'dk163', text: "Why are elephants so wrinkly? Because they can't fit in the ironing board." },
-                { id: 'dk164', text: "Why did the hipster burn his tongue? He drank his coffee before it was cool." },
-                { id: 'dk165', text: "What's a lawyer's favorite drink? Appeal juice." },
-                { id: 'dk166', text: "Why did the orange stop halfway across the road? It ran out of juice." },
-                { id: 'dk167', text: "Why did the man stare at the can of orange juice? Because it said 'concentrate'." },
-                { id: 'dk168', text: "What do you call an alligator in a vest? An investigator." },
-                { id: 'dk169', text: "What did the corn say when it was asked a question? 'I'm stumped.'" },
-                { id: 'dk170', text: "Why do birds fly south for the winter? Because it's too far to walk." },
-                { id: 'dk171', text: "What do you call a cow with no legs? Ground beef." },
-                { id: 'dk172', text: "What do you call a cow with two legs? Lean beef." },
-                { id: 'dk173', text: "What do you call a sheep covered in chocolate? A candy baa." },
-                { id: 'dk174', text: "What do you get from a pampered cow? Spoiled milk." },
-                { id: 'dk175', text: "Why did the farmer feed his cow money? He wanted rich milk." },
-                { id: 'dk176', text: "What's a vampire's favorite fruit? A blood orange." },
-                { id: 'dk177', text: "Why did the man put his car in the oven? To make a hot rod." },
-                { id: 'dk178', text: "What do you call a deer with no eyes? No idea." },
-                { id: 'dk179', text: "What do you call a deer with no eyes and no legs? Still no idea." },
-                { id: 'dk180', text: "What do you call a deer with no eyes, no legs, and no genitalia? No fucking idea." },
-                { id: 'dk181', text: "Why did the cookie go to the doctor? It felt crumbly." },
-                { id: 'dk182', text: "What's a skeleton's favorite instrument? A trom-bone." },
-                { id: 'dk183', text: "What do you call a snowman with a six-pack? An abdominal snowman." },
-                { id: 'dk184', text: "What do you call a fish with a bow tie? Sofishticated." },
-                { id: 'dk185', text: "Why don't you ever see elephants hiding in trees? Because they're really good at it." },
-                { id: 'dk186', text: "What do you call a lazy kangaroo? A pouch potato." },
-                { id: 'dk187', text: "What do you call a sad strawberry? A blueberry." },
-                { id: 'dk188', text: "What's the difference between a poorly dressed man on a unicycle and a well-dressed man on a bicycle? Attire." },
-                { id: 'dk189', text: "Why are teenagers so rude? Because they're going through a faze." },
-                { id: 'dk190', text: "What do you call two trees that are in a relationship? A pair of pines." },
-                { id: 'dk191', text: "What does a nosy pepper do? Gets jalapeño business." },
-                { id: 'dk192', text: "What's a stick's favorite movie? The Bourne Identity." },
-                { id: 'dk193', text: "What did the drill say to the worker? 'I'm bored.'" },
-                { id: 'dk194', text: "What do you call a dog that can do magic tricks? A labracadabrador." },
-                { id: 'dk195', text: "Why did the broom break up with the dustpan? Because there was too much sweeping going on." },
-                { id: 'dk196', text: "What did the cake say to the oven? 'It's getting hot in here!'" },
-                { id: 'dk197', text: "Why do we tell actors to break a leg? Because every play has a cast." },
-                { id: 'dk198', text: "What do you call a pile of cats? A meow-ntain." },
-                { id: 'dk199', text: "What is a ghost's favorite drink? Boo-berry juice." },
-                { id: 'dk200', text: "What did the lint say to the dryer? 'I'll be hanging around.'" },
-                { id: 'dk201', text: "I'm reading a book about the Titanic. It's a real page-turner." },
-                { id: 'dk202', text: "My girlfriend left me because she said I was too depressed. That was the most uplifting thing she's ever said to me." },
-                { id: 'dk203', text: "I'm not afraid of death. I just don't want to be there when it happens." },
-                { id: 'dk204', text: "I told my wife she should embrace her mistakes. She gave me a hug." },
-                { id: 'dk205', text: "I used to play piano by ear. Now I just use my fingers." },
-                { id: 'dk206', text: "What's the difference between a G-spot and a golf ball? A guy will actually spend 20 minutes looking for a golf ball." },
-                { id: 'dk207', text: "Why did the man put his money in the freezer? He wanted cold hard cash." },
-                { id: 'dk208', text: "What do you call a guy with a rubber toe? Roberto." },
-                { id: 'dk209', text: "My favorite thing about my job is the people. They're all fictional." },
-                { id: 'dk210', text: "What's the best thing about Switzerland? I don't know, but the flag is a big plus." },
-                { id: 'dk211', text: "I'm terrified of elevators. I'm going to start taking steps to avoid them." },
-                { id: 'dk212', text: "What do you call a fake noodle? An impasta." },
-                { id: 'dk213', text: "Why did the scarecrow win an award? He was outstanding in his field." },
-                { id: 'dk214', text: "What's green and has wheels? Grass. I lied about the wheels." },
-                { id: 'dk215', text: "How do you make holy water? You boil the hell out of it." },
-                { id: 'dk216', text: "Why don't scientists trust atoms? Because they make up everything." },
-                { id: 'dk217', text: "What do you call a fish with no eyes? Fsh." },
-                { id: 'dk218', text: "Why don't eggs tell jokes? They'd crack each other up." },
-                { id: 'dk219', text: "What do you call a bear with no teeth? A gummy bear." },
-                { id: 'dk220', text: "Why did the bicycle fall over? Because it was two-tired." },
-                { id: 'dk221', text: "I'm on a seafood diet. I see food and I eat it." },
-                { id: 'dk222', text: "What's orange and sounds like a parrot? A carrot." },
-                { id: 'dk223', text: "Why did the math book look so sad? Because it had too many problems." },
-                { id: 'dk224', text: "I'm reading a book on anti-gravity. It's impossible to put down." },
-                { id: 'dk225', text: "Did you hear about the guy who invented Lifesavers? They say he made a mint." },
-                { id: 'dk226', text: "What's the difference between a hippo and a zippo? One is really heavy, the other is a little lighter." },
-                { id: 'dk227', text: "What's brown and sticky? A stick." },
-                { id: 'dk228', text: "How does the moon cut his hair? Eclipse it." },
-                { id: 'dk229', text: "Why don't skeletons fight each other? They don't have the guts." },
-                { id: 'dk230', text: "I'm not a big fan of stairs. They're always up to something." },
-                { id: 'dk231', text: "Why can't you hear a pterodactyl go to the bathroom? Because the P is silent." },
-                { id: 'dk232', text: "Where do you find giant snails? On the ends of giant dogs' leashes." },
-                { id: 'dk233', text: "Why did the golfer change his clothes? He got a hole in one." },
-                { id: 'dk234', text: "I used to think I was indecisive, but now I'm not so sure." },
-                { id: 'dk235', text: "What do you call a fat psychic? A four-chin teller." },
-                { id: 'dk236', text: "What do you call a boomerang that doesn't come back? A stick." },
-                { id: 'dk237', text: "What do you call a nun who sleepwalks? A roamin' Catholic." },
-                { id: 'dk238', text: "What do you call a droid that takes the long way around? R2-Detour." },
-                { id: 'dk239', text: "What do you call a singing laptop? A Dell." },
-                { id: 'dk240', text: "What did the grape say when it got stepped on? Nothing, it just let out a little wine." },
-                { id: 'dk241', text: "What did the left eye say to the right eye? Between us, something smells." },
-                { id: 'dk242', text: "Why did the tomato turn red? Because it saw the salad dressing!" },
-                { id: 'dk243', text: "What do you call a pig that does karate? A pork chop!" },
-                { id: 'dk244', text: "Why was the broom late? It swept in!" },
-                { id: 'dk245', text: "Why did the chicken go to the seance? To talk to the other side!" },
-                { id: 'dk246', text: "Why do potatoes make good detectives? Because they keep their eyes peeled!" },
-                { id: 'dk247', text: "What's red and bad for your teeth? A brick." },
-                { id: 'dk248', text: "What do you call a nun who's acting very aggressive? A nun-chuck." },
-                { id: 'dk249', text: "Why did the man put his money in the freezer? He wanted cold hard cash." },
-                { id: 'dk250', text: "What's a cow's favorite type of math? Cows-culus." },
-                { id: 'dk251', text: "What did the mother cow say to the baby cow? It's pasture bedtime." },
-                { id: 'dk252', text: "Why did the invisible man turn down the job offer? He couldn't see himself doing it." },
-                { id: 'dk253', text: "How do you make a tissue dance? You put a little boogie in it." },
-                { id: 'dk254', text: "Why don't scientists trust stairs? Because they're always up to something." },
-                { id: 'dk255', text: "What do you call a bee that can't make up its mind? A maybe." },
-                { id: 'dk256', text: "What's a pirate's favorite letter? You'd think it's R, but it's the C." },
-                { id: 'dk257', text: "What did the zero say to the eight? Nice belt." },
-                { id: 'dk258', text: "Why did the bald man put a rabbit on his head? Because he wanted a hare piece." },
-                { id: 'dk259', text: "What do you call a bear with no socks on? Barefoot." },
-                { id: 'dk260', text: "What do you call a pig that does yoga? A porker." },
-                { id: 'dk261', text: "What did the mother say to her son after he ate a whole pizza? 'That's a lot of dough!'" },
-                { id: 'dk262', text: "Why are elephants so wrinkly? Because they can't fit in the ironing board." },
-                { id: 'dk263', text: "Why did the hipster burn his tongue? He drank his coffee before it was cool." },
-                { id: 'dk264', text: "What's a lawyer's favorite drink? Appeal juice." },
-                { id: 'dk265', text: "Why did the orange stop halfway across the road? It ran out of juice." },
-                { id: 'dk266', text: "Why did the man stare at the can of orange juice? Because it said 'concentrate'." },
-                { id: 'dk267', text: "What do you call an alligator in a vest? An investigator." },
-                { id: 'dk268', text: "What did the corn say when it was asked a question? 'I'm stumped.'" },
-                { id: 'dk269', text: "Why do birds fly south for the winter? Because it's too far to walk." },
-                { id: 'dk270', text: "What do you call a cow with no legs? Ground beef." },
-                { id: 'dk271', text: "What do you call a cow with two legs? Lean beef." },
-                { id: 'dk272', text: "What do you call a sheep covered in chocolate? A candy baa." },
-                { id: 'dk273', text: "What do you get from a pampered cow? Spoiled milk." },
-                { id: 'dk274', text: "Why did the farmer feed his cow money? He wanted rich milk." },
-                { id: 'dk275', text: "What's a vampire's favorite fruit? A blood orange." },
-                { id: 'dk276', text: "Why did the man put his car in the oven? To make a hot rod." },
-                { id: 'dk277', text: "What do you call a deer with no eyes? No idea." },
-                { id: 'dk278', text: "What do you call a deer with no eyes and no legs? Still no idea." },
-                { id: 'dk279', text: "What do you call a deer with no eyes, no legs, and no genitalia? No fucking idea." },
-                { id: 'dk280', text: "Why did the cookie go to the doctor? It felt crumbly." },
-                { id: 'dk281', text: "What's a skeleton's favorite instrument? A trom-bone." },
-                { id: 'dk282', text: "What do you call a snowman with a six-pack? An abdominal snowman." },
-                { id: 'dk283', text: "What do you call a fish with a bow tie? Sofishticated." },
-                { id: 'dk284', text: "Why don't you ever see elephants hiding in trees? Because they're really good at it." },
-                { id: 'dk285', text: "What do you call a lazy kangaroo? A pouch potato." },
-                { id: 'dk286', text: "What do you call a sad strawberry? A blueberry." },
-                { id: 'dk287', text: "What's the difference between a poorly dressed man on a unicycle and a well-dressed man on a bicycle? Attire." },
-                { id: 'dk288', text: "Why are teenagers so rude? Because they're going through a faze." },
-                { id: 'dk289', text: "What do you call two trees that are in a relationship? A pair of pines." },
-                { id: 'dk290', text: "What does a nosy pepper do? Gets jalapeño business." },
-                { id: 'dk291', text: "What's a stick's favorite movie? The Bourne Identity." },
-                { id: 'dk292', text: "What did the drill say to the worker? 'I'm bored.'" },
-                { id: 'dk293', text: "What do you call a dog that can do magic tricks? A labracadabrador." },
-                { id: 'dk294', text: "Why did the broom break up with the dustpan? Because there was too much sweeping going on." },
-                { id: 'dk295', text: "What did the cake say to the oven? 'It's getting hot in here!'" },
-                { id: 'dk296', text: "Why do we tell actors to break a leg? Because every play has a cast." },
-                { id: 'dk297', text: "What do you call a pile of cats? A meow-ntain." },
-                { id: 'dk298', text: "What is a ghost's favorite drink? Boo-berry juice." },
-                { id: 'dk299', text: "What did the lint say to the dryer? 'I'll be hanging around.'" },
-                { id: 'dk300', text: "I have a joke about death, but it's a bit morbid." },
+                { id: 'dk101', text: "I'm reading a book about the Titanic. It's a real page-turner." },
+                { id: 'dk102', text: "My girlfriend left me because she said I was too depressed. That was the most uplifting thing she's ever said to me." },
+                { id: 'dk103', text: "I'm not afraid of death. I just don't want to be there when it happens." },
+                { id: 'dk104', text: "What's the difference between a G-spot and a golf ball? A guy will actually spend 20 minutes looking for a golf ball." },
+                { id: 'dk105', text: "Why did the man put his money in the freezer? He wanted cold hard cash." },
+                { id: 'dk106', text: "What do you call a guy with a rubber toe? Roberto." },
+                { id: 'dk107', text: "My favorite thing about my job is the people. They're all fictional." },
+                { id: 'dk108', text: "What's the best thing about Switzerland? I don't know, but the flag is a big plus." },
+                { id: 'dk109', text: "I'm terrified of elevators. I'm going to start taking steps to avoid them." },
+                { id: 'dk110', text: "What do you call a fake noodle? An impasta." },
+                { id: 'dk111', text: "Why did the scarecrow win an award? He was outstanding in his field." },
+                { id: 'dk112', text: "What's green and has wheels? Grass. I lied about the wheels." },
+                { id: 'dk113', text: "How do you make holy water? You boil the hell out of it." },
+                { id: 'dk114', text: "Why don't scientists trust atoms? Because they make up everything." },
+                { id: 'dk115', text: "What do you call a fish with no eyes? Fsh." },
+                { id: 'dk116', text: "Why don't eggs tell jokes? They'd crack each other up." },
+                { id: 'dk117', text: "What do you call a bear with no teeth? A gummy bear." },
+                { id: 'dk118', text: "Why did the bicycle fall over? Because it was two-tired." },
+                { id: 'dk119', text: "I'm on a seafood diet. I see food and I eat it." },
+                { id: 'dk120', text: "What's orange and sounds like a parrot? A carrot." },
+                { id: 'dk121', text: "Why did the math book look so sad? Because it had too many problems." },
+                { id: 'dk122', text: "I'm reading a book on anti-gravity. It's impossible to put down." },
+                { id: 'dk123', text: "Did you hear about the guy who invented Lifesavers? They say he made a mint." },
+                { id: 'dk124', text: "What's the difference between a hippo and a zippo? One is really heavy, the other is a little lighter." },
+                { id: 'dk125', text: "What's brown and sticky? A stick." },
+                { id: 'dk126', text: "How does the moon cut his hair? Eclipse it." },
+                { id: 'dk127', text: "Why don't skeletons fight each other? They don't have the guts." },
+                { id: 'dk128', text: "I'm not a big fan of stairs. They're always up to something." },
+                { id: 'dk129', text: "Why can't you hear a pterodactyl go to the bathroom? Because the P is silent." },
+                { id: 'dk130', text: "Where do you find giant snails? On the ends of giant dogs' leashes." },
+                { id: 'dk131', text: "Why did the golfer change his clothes? He got a hole in one." },
+                { id: 'dk132', text: "I used to think I was indecisive, but now I'm not so sure." },
+                { id: 'dk133', text: "What do you call a fat psychic? A four-chin teller." },
+                { id: 'dk134', text: "What do you call a boomerang that doesn't come back? A stick." },
+                { id: 'dk135', text: "What do you call a nun who sleepwalks? A roamin' Catholic." },
+                { id: 'dk136', text: "What do you call a droid that takes the long way around? R2-Detour." },
+                { id: 'dk137', text: "What do you call a singing laptop? A Dell." },
+                { id: 'dk138', text: "What did the grape say when it got stepped on? Nothing, it just let out a little wine." },
+                { id: 'dk139', text: "What did the left eye say to the right eye? Between us, something smells." },
+                { id: 'dk140', text: "Why did the tomato turn red? Because it saw the salad dressing!" },
+                { id: 'dk141', text: "What do you call a pig that does karate? A pork chop!" },
+                { id: 'dk142', text: "Why was the broom late? It swept in!" },
+                { id: 'dk143', text: "Why did the chicken go to the seance? To talk to the other side!" },
+                { id: 'dk144', text: "Why do potatoes make good detectives? Because they keep their eyes peeled!" },
+                { id: 'dk145', text: "What's red and bad for your teeth? A brick." },
+                { id: 'dk146', text: "What do you call a nun who's acting very aggressive? A nun-chuck." },
+                { id: 'dk147', text: "Why did the man put his money in the freezer? He wanted cold hard cash." },
+                { id: 'dk148', text: "What's a cow's favorite type of math? Cows-culus." },
+                { id: 'dk149', text: "What did the mother cow say to the baby cow? It's pasture bedtime." },
+                { id: 'dk150', text: "Why did the invisible man turn down the job offer? He couldn't see himself doing it." },
+                { id: 'dk151', text: "How do you make a tissue dance? You put a little boogie in it." },
+                { id: 'dk152', text: "Why don't scientists trust stairs? Because they're always up to something." },
+                { id: 'dk153', text: "What do you call a bee that can't make up its mind? A maybe." },
+                { id: 'dk154', text: "What's a pirate's favorite letter? You'd think it's R, but it's the C." },
+                { id: 'dk155', text: "What did the zero say to the eight? Nice belt." },
+                { id: 'dk156', text: "Why did the bald man put a rabbit on his head? Because he wanted a hare piece." },
+                { id: 'dk157', text: "What do you call a bear with no socks on? Barefoot." },
+                { id: 'dk158', text: "What do you call a pig that does yoga? A porker." },
+                { id: 'dk159', text: "What did the mother say to her son after he ate a whole pizza? 'That's a lot of dough!'" },
+                { id: 'dk160', text: "Why are elephants so wrinkly? Because they can't fit in the ironing board." },
+                { id: 'dk161', text: "Why did the hipster burn his tongue? He drank his coffee before it was cool." },
+                { id: 'dk162', text: "What's a lawyer's favorite drink? Appeal juice." },
+                { id: 'dk163', text: "Why did the orange stop halfway across the road? It ran out of juice." },
+                { id: 'dk164', text: "Why did the man stare at the can of orange juice? Because it said 'concentrate'." },
+                { id: 'dk165', text: "What do you call an alligator in a vest? An investigator." },
+                { id: 'dk166', text: "What did the corn say when it was asked a question? 'I'm stumped.'" },
+                { id: 'dk167', text: "Why do birds fly south for the winter? Because it's too far to walk." },
+                { id: 'dk168', text: "What do you call a cow with no legs? Ground beef." },
+                { id: 'dk169', text: "What do you call a cow with two legs? Lean beef." },
+                { id: 'dk170', text: "What do you call a sheep covered in chocolate? A candy baa." },
+                { id: 'dk171', text: "What do you get from a pampered cow? Spoiled milk." },
+                { id: 'dk172', text: "Why did the farmer feed his cow money? He wanted rich milk." },
+                { id: 'dk173', text: "What's a vampire's favorite fruit? A blood orange." },
+                { id: 'dk174', text: "Why did the man put his car in the oven? To make a hot rod." },
+                { id: 'dk175', text: "What do you call a deer with no eyes? No idea." },
+                { id: 'dk176', text: "What do you call a deer with no eyes and no legs? Still no idea." },
+                { id: 'dk177', text: "What do you call a deer with no eyes, no legs, and no genitalia? No fucking idea." },
+                { id: 'dk178', text: "Why did the cookie go to the doctor? It felt crumbly." },
+                { id: 'dk179', text: "What's a skeleton's favorite instrument? A trom-bone." },
+                { id: 'dk180', text: "What do you call a snowman with a six-pack? An abdominal snowman." },
+                { id: 'dk181', text: "What do you call a fish with a bow tie? Sofishticated." },
+                { id: 'dk182', text: "Why don't you ever see elephants hiding in trees? Because they're really good at it." },
+                { id: 'dk183', text: "What do you call a lazy kangaroo? A pouch potato." },
+                { id: 'dk184', text: "What do you call a sad strawberry? A blueberry." },
+                { id: 'dk185', text: "What's the difference between a poorly dressed man on a unicycle and a well-dressed man on a bicycle? Attire." },
+                { id: 'dk186', text: "Why are teenagers so rude? Because they're going through a faze." },
+                { id: 'dk187', text: "What do you call two trees that are in a relationship? A pair of pines." },
+                { id: 'dk188', text: "What does a nosy pepper do? Gets jalapeño business." },
+                { id: 'dk189', text: "What's a stick's favorite movie? The Bourne Identity." },
+                { id: 'dk190', text: "What did the drill say to the worker? 'I'm bored.'" },
+                { id: 'dk191', text: "What do you call a dog that can do magic tricks? A labracadabrador." },
+                { id: 'dk192', text: "Why did the broom break up with the dustpan? Because there was too much sweeping going on." },
+                { id: 'dk193', text: "What did the cake say to the oven? 'It's getting hot in here!'" },
+                { id: 'dk194', text: "Why do we tell actors to break a leg? Because every play has a cast." },
+                { id: 'dk195', text: "What do you call a pile of cats? A meow-ntain." },
+                { id: 'dk196', text: "What is a ghost's favorite drink? Boo-berry juice." },
+                { id: 'dk197', text: "What did the lint say to the dryer? 'I'll be hanging around.'" },
+                { id: 'dk198', text: "Why didn't the skeleton go to the party? He had no body to go with." },
+                { id: 'dk199', text: "What's a vampire's favorite game? Blood pong." },
+                { id: 'dk200', text: "I have a joke about death, but it's a bit morbid." },
             ],
 
             food: [
@@ -2525,10 +2672,122 @@
                 { id: 'r200', text: "You're my everything." },
             ],
 
-            // ─── ADULT (18+) — only 1 dirty joke here, rest provided separately ───
-            adult: [
-                { id: 'ad1', text: "Why do men find it difficult to make eye contact? Because breasts don't have eyes." },
-                // ─── Additional dirty jokes will be added after this code ───
+            // ─── SCHOOL ─── (new category)
+            school: [
+                { id: 's1', text: "Why did the student eat his homework? Because his teacher told him it was a piece of cake." },
+                { id: 's2', text: "Why did the teacher wear sunglasses? Because his students were so bright." },
+                { id: 's3', text: "What did the math book say to the biology book? 'We have so many problems.'" },
+                { id: 's4', text: "Why did the student bring a ladder to school? He wanted to go to high school." },
+                { id: 's5', text: "Why was the teacher angry at the calendar? Because it was making the days too short." },
+                { id: 's6', text: "What do you call a school that's always open? A 24-hour academy." },
+                { id: 's7', text: "Why did the student get a detention? He threw a rubber band at the teacher." },
+                { id: 's8', text: "What's a teacher's favorite game? Pop quiz." },
+                { id: 's9', text: "Why did the teacher write on the board? He wanted to make a point." },
+                { id: 's10', text: "What do you call a student who's good at math? A genius." },
+                { id: 's11', text: "Why did the student get a black eye? He was caught cheating." },
+                { id: 's12', text: "What did the pencil say to the eraser? 'You're always rubbing me the wrong way.'" },
+                { id: 's13', text: "Why did the teacher go to the doctor? He had a bad case of the yells." },
+                { id: 's14', text: "What's a student's favorite drink? A pop quiz." },
+                { id: 's15', text: "Why did the student get a new ruler? He had a ruling problem." },
+                { id: 's16', text: "Why did the teacher get a promotion? He had a lot of class." },
+                { id: 's17', text: "Why did the student cross the playground? To get to the other slide." },
+                { id: 's18', text: "Why did the student fail his driving test? He had a problem with his brakes." },
+                { id: 's19', text: "What do you call a teacher who's always right? A know-it-all." },
+                { id: 's20', text: "Why did the student bring a calculator to school? He wanted to do his math homework." },
+                { id: 's21', text: "Why did the teacher quit his job? He was tired of the constant pressure." },
+                { id: 's22', text: "What's the best thing about school? Summer break." },
+                { id: 's23', text: "Why did the student get a bad grade? He didn't study." },
+                { id: 's24', text: "What did the teacher say to the student who was late? 'You're in trouble.'" },
+                { id: 's25', text: "Why did the student get a new pair of shoes? He was caught in a shoe-shining scandal." },
+                { id: 's26', text: "Why did the teacher go to jail? He was caught for a math crime." },
+                { id: 's27', text: "What do you call a student who's always late? A tardy." },
+                { id: 's28', text: "Why did the student go to the bank? He wanted to cash a check." },
+                { id: 's29', text: "What's a teacher's favorite type of music? Class-ical." },
+                { id: 's30', text: "Why did the student get a new pencil? He broke his old one." },
+                { id: 's31', text: "Why did the teacher get a new job? He wanted to be a principal." },
+                { id: 's32', text: "What's the difference between a good student and a bad student? The good student studies." },
+                { id: 's33', text: "Why did the student get a detention? He was caught sleeping in class." },
+                { id: 's34', text: "What did the teacher say to the class? 'Open your books.'" },
+                { id: 's35', text: "Why did the student get a new backpack? He outgrew his old one." },
+                { id: 's36', text: "Why did the teacher write on the board? He wanted to make a point." },
+                { id: 's37', text: "What's the most important thing in school? Education." },
+                { id: 's38', text: "Why did the student get a bad grade? He didn't pay attention." },
+                { id: 's39', text: "What did the teacher say to the student? 'You're a star.'" },
+                { id: 's40', text: "Why did the student get a new notebook? He filled up his old one." },
+                { id: 's41', text: "Why did the teacher get a new car? He was tired of his old one." },
+                { id: 's42', text: "What's a student's favorite subject? Recess." },
+                { id: 's43', text: "Why did the student go to the library? He wanted to read a book." },
+                { id: 's44', text: "Why did the teacher go to the gym? He wanted to get some exercise." },
+                { id: 's45', text: "What did the student say to the teacher? 'I'm bored.'" },
+                { id: 's46', text: "Why did the student get a new watch? He needed to keep track of time." },
+                { id: 's47', text: "Why did the teacher get a new pen? He lost his old one." },
+                { id: 's48', text: "What's the best part of school? The friends you make." },
+                { id: 's49', text: "Why did the student get a new phone? He dropped his old one." },
+                { id: 's50', text: "Why did the teacher quit? He couldn't take the heat." },
+                { id: 's51', text: "Why did the student bring a ladder to school? He wanted to reach the high grades." },
+                { id: 's52', text: "What did the teacher say to the class clown? 'You're a joke.'" },
+                { id: 's53', text: "Why did the student put his homework in the freezer? He wanted to have a cool assignment." },
+                { id: 's54', text: "What's a teacher's favorite drink? A cup of tea-cher." },
+                { id: 's55', text: "Why did the student get a new calculator? He couldn't count on the old one." },
+            ],
+
+            // ─── WORK ─── (new category)
+            work: [
+                { id: 'w1', text: "Why did the worker get promoted? He knew how to use the coffee machine." },
+                { id: 'w2', text: "What do you call a meeting that never ends? A Monday." },
+                { id: 'w3', text: "Why did the businessman go to the bar? He wanted a beer." },
+                { id: 'w4', text: "What did the boss say to the employee? 'You're fired.'" },
+                { id: 'w5', text: "Why did the worker get a new desk? He wanted a better view." },
+                { id: 'w6', text: "What's the difference between a good worker and a great worker? The great worker knows how to delegate." },
+                { id: 'w7', text: "Why did the employee get a raise? He asked for it." },
+                { id: 'w8', text: "What's a boss's favorite word? 'Yes'." },
+                { id: 'w9', text: "Why did the worker get a new computer? His old one was too slow." },
+                { id: 'w10', text: "What's the most important thing in a workplace? Communication." },
+                { id: 'w11', text: "Why did the employee quit his job? He was tired of the commute." },
+                { id: 'w12', text: "What do you call a lazy worker? A slacker." },
+                { id: 'w13', text: "Why did the boss get a new office? He wanted a bigger one." },
+                { id: 'w14', text: "What's a worker's favorite type of pizza? Free pizza." },
+                { id: 'w15', text: "Why did the employee get a promotion? He was the only one who showed up." },
+                { id: 'w16', text: "What did the worker say to his boss? 'I need a raise.'" },
+                { id: 'w17', text: "Why did the worker get a new chair? His old one broke." },
+                { id: 'w18', text: "What's the best part of work? The weekend." },
+                { id: 'w19', text: "Why did the employee get a new phone? He needed to make calls." },
+                { id: 'w20', text: "What do you call a boss who's always angry? A grouch." },
+                { id: 'w21', text: "Why did the worker get a new office? He was tired of the old one." },
+                { id: 'w22', text: "What's a worker's favorite drink? A coffee." },
+                { id: 'w23', text: "Why did the employee get a new job? He wanted a better salary." },
+                { id: 'w24', text: "What's the worst part of work? The commute." },
+                { id: 'w25', text: "Why did the boss get a new car? He needed a reliable one." },
+                { id: 'w26', text: "What do you call a worker who's always late? A tardy." },
+                { id: 'w27', text: "Why did the employee get a new keyboard? His old one broke." },
+                { id: 'w28', text: "What's a worker's favorite type of music? The one that plays on the radio." },
+                { id: 'w29', text: "Why did the boss get a new project? He needed to stay busy." },
+                { id: 'w30', text: "What do you call a boss who's always happy? A unicorn." },
+                { id: 'w31', text: "Why did the employee get a new computer? His old one was too slow." },
+                { id: 'w32', text: "What's the difference between a good job and a great job? The benefits." },
+                { id: 'w33', text: "Why did the worker get a new desk? He wanted a better one." },
+                { id: 'w34', text: "What do you call a boss who's always on time? A punctual boss." },
+                { id: 'w35', text: "Why did the employee get a new laptop? He needed it for work." },
+                { id: 'w36', text: "What's a worker's favorite thing about work? The paycheck." },
+                { id: 'w37', text: "Why did the boss get a new assistant? He needed help." },
+                { id: 'w38', text: "What do you call a worker who's always busy? A busy bee." },
+                { id: 'w39', text: "Why did the employee get a new monitor? His old one was broken." },
+                { id: 'w40', text: "What's the most stressful thing about work? The deadlines." },
+                { id: 'w41', text: "Why did the boss get a new coffee maker? He needed a better one." },
+                { id: 'w42', text: "What do you call a worker who's always happy? A cheery worker." },
+                { id: 'w43', text: "Why did the employee get a new phone? He needed a new one." },
+                { id: 'w44', text: "What's a boss's favorite thing to say? 'I'll think about it.'" },
+                { id: 'w45', text: "Why did the worker get a new headset? He needed to make calls." },
+                { id: 'w46', text: "What do you call a worker who never makes mistakes? A myth." },
+                { id: 'w47', text: "Why did the boss get a new calendar? He needed to plan." },
+                { id: 'w48', text: "What's a worker's favorite day of the week? Friday." },
+                { id: 'w49', text: "Why did the employee get a promotion? He worked hard." },
+                { id: 'w50', text: "What do you call a boss who's always right? A dictator." },
+                { id: 'w51', text: "Why did the worker quit? He found a better opportunity." },
+                { id: 'w52', text: "What's a worker's favorite word? 'Bonus.'" },
+                { id: 'w53', text: "Why did the employee get a new ID badge? He lost his old one." },
+                { id: 'w54', text: "What do you call a meeting that's productive? A miracle." },
+                { id: 'w55', text: "Why did the boss buy new chairs? He wanted to keep employees seated." },
             ],
         };
 
@@ -2555,34 +2814,61 @@
             return shuffled.slice(0, n);
         }
 
-        // ─── Selection algorithm: 20 jokes, at least 1 from each category (except adult), 1 adult ───
+        // ─── Track seen jokes (session) ───
+        let seenIds = new Set();
+
+        // ─── Selection: 20 jokes, no repeats from seenIds ───
         function selectRandomJokes(count = 20) {
-            const categories = ['general', 'dad', 'dark', 'food', 'kids', 'programming', 'romantic'];
+            const categories = ['general', 'dad', 'dark', 'food', 'kids', 'programming', 'romantic', 'animal', 'school', 'work'];
             const selected = [];
 
-            // 1. Pick 1 from each category (except adult)
+            // Try to pick one from each category, avoiding seen
             categories.forEach(cat => {
                 const pool = JOKES[cat] || [];
-                if (pool.length > 0) {
-                    const idx = Math.floor(Math.random() * pool.length);
-                    selected.push({ ...pool[idx], cat });
+                const available = pool.filter(j => !seenIds.has(j.id));
+                if (available.length > 0) {
+                    const idx = Math.floor(Math.random() * available.length);
+                    const joke = available[idx];
+                    selected.push({ ...joke, cat });
+                    seenIds.add(joke.id);
+                } else {
+                    // If all seen, pick any (will reset later if needed)
+                    const idx2 = Math.floor(Math.random() * pool.length);
+                    const joke2 = pool[idx2];
+                    selected.push({ ...joke2, cat });
+                    seenIds.add(joke2.id);
                 }
             });
 
-            // 2. Pick 1 adult joke (dirty)
+            // Pick 1 adult
             const adultPool = JOKES.adult || [];
-            if (adultPool.length > 0) {
-                const idx = Math.floor(Math.random() * adultPool.length);
-                selected.push({ ...adultPool[idx], cat: 'adult' });
+            const adultAvailable = adultPool.filter(j => !seenIds.has(j.id));
+            if (adultAvailable.length > 0) {
+                const idx = Math.floor(Math.random() * adultAvailable.length);
+                const joke = adultAvailable[idx];
+                selected.push({ ...joke, cat: 'adult' });
+                seenIds.add(joke.id);
+            } else {
+                const idx2 = Math.floor(Math.random() * adultPool.length);
+                const joke2 = adultPool[idx2];
+                selected.push({ ...joke2, cat: 'adult' });
+                seenIds.add(joke2.id);
             }
 
-            // 3. Fill remaining with random from all categories (excluding adult to avoid over-dirty)
+            // Fill remaining with random from all except adult, avoiding seen
             const remaining = count - selected.length;
-            const allExceptAdult = FLAT_JOKES.filter(j => j.cat !== 'adult');
+            const allExceptAdult = FLAT_JOKES.filter(j => j.cat !== 'adult' && !seenIds.has(j.id));
             const extra = getRandomItems(allExceptAdult, remaining);
+            extra.forEach(j => { seenIds.add(j.id); });
             selected.push(...extra);
 
-            // 4. Shuffle the final set
+            // If we still don't have enough, reset seenIds and retry
+            if (selected.length < count) {
+                seenIds.clear();
+                return selectRandomJokes(count);
+            }
+
+            // Shuffle final set
             for (let i = selected.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [selected[i], selected[j]] = [selected[j], selected[i]];
@@ -2622,6 +2908,8 @@
         const toast = document.querySelector('.toast');
         const toastMsg = $('toastMsg');
         const themeToggle = $('themeToggle');
+        const topCategories = $('topCategories');
+        const bottomCategories = $('bottomCategories');
 
         // ============================================================
         // 4. RENDER
@@ -2643,7 +2931,10 @@
                     kids: '🧸',
                     programming: '💻',
                     romantic: '❤️',
-                    adult: '🔞'
+                    adult: '🔞',
+                    animal: '🐾',
+                    school: '📚',
+                    work: '💼'
                 };
                 const emoji = emojiMap[joke.cat] || '🤣';
                 card.innerHTML = `
@@ -2694,11 +2985,78 @@
             const jokes = selectRandomJokes(20);
             currentJokes = jokes;
             renderJokes(jokes);
-            // toast
             showToast('Fresh jokes loaded! 🎉');
-            // animate refresh icon
             refreshBtn.querySelector('i').style.animation = 'spin 0.6s ease';
             setTimeout(() => refreshBtn.querySelector('i').style.animation = '', 700);
+        }
+
+        function buildCategoryUI() {
+            const catList = ['all', ...CATEGORIES];
+            const emojiMap = {
+                all: '🌍',
+                general: '😂',
+                dad: '👨',
+                dark: '💀',
+                food: '🍕',
+                kids: '🧸',
+                programming: '💻',
+                romantic: '❤️',
+                adult: '🔞',
+                animal: '🐾',
+                school: '📚',
+                work: '💼'
+            };
+            // Top pills
+            topCategories.innerHTML = '';
+            catList.forEach(cat => {
+                const pill = document.createElement('button');
+                pill.className = `category-pill${cat === 'all' ? ' active' : ''}`;
+                pill.dataset.cat = cat;
+                const emoji = emojiMap[cat] || '📌';
+                pill.innerHTML = `${emoji} ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
+                pill.onclick = () => {
+                    if (cat === 'adult' && !localStorage.getItem('adultVerified')) {
+                        checkAdultAccess(() => {
+                            document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+                            pill.classList.add('active');
+                            document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+                            filterByCategory(cat);
+                        });
+                        return;
+                    }
+                    document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+                    pill.classList.add('active');
+                    document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+                    filterByCategory(cat);
+                };
+                topCategories.appendChild(pill);
+            });
+
+            // Bottom categories
+            bottomCategories.innerHTML = '';
+            catList.forEach(cat => {
+                const badge = document.createElement('button');
+                badge.className = `cat-badge-lg${cat === 'all' ? ' active' : ''}${cat === 'adult' ? ' dirty' : ''}`;
+                badge.dataset.cat = cat;
+                const emoji = emojiMap[cat] || '📌';
+                badge.innerHTML = `${emoji} ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
+                badge.onclick = () => {
+                    if (cat === 'adult' && !localStorage.getItem('adultVerified')) {
+                        checkAdultAccess(() => {
+                            document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.remove('active'));
+                            badge.classList.add('active');
+                            document.querySelectorAll('.category-pill').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+                            filterByCategory(cat);
+                        });
+                        return;
+                    }
+                    document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.remove('active'));
+                    badge.classList.add('active');
+                    document.querySelectorAll('.category-pill').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+                    filterByCategory(cat);
+                };
+                bottomCategories.appendChild(badge);
+            });
         }
 
         // ─── Joke Modal ───
@@ -2711,7 +3069,7 @@
             }
             currentJokeIndex = index;
             currentJokeList = list;
-            modalCat.textContent = `${joke.cat.toUpperCase()} 🔞`;
+            modalCat.textContent = joke.cat.toUpperCase();
             modalJokeText.textContent = joke.text;
             modal.classList.add('active');
             prevJokeBtn.style.display = index > 0 ? 'inline-block' : 'none';
@@ -2765,57 +3123,14 @@
             // Loader
             setTimeout(() => document.getElementById('loader').classList.add('hidden'), 600);
 
+            // Build category UI
+            buildCategoryUI();
+
             // Initial load
             refreshJokes();
 
             // Refresh button
             refreshBtn.onclick = refreshJokes;
-
-            // Category pills (top)
-            document.querySelectorAll('.category-pill').forEach(btn => {
-                btn.onclick = () => {
-                    const cat = btn.dataset.cat;
-                    if (cat === 'adult' && !localStorage.getItem('adultVerified')) {
-                        checkAdultAccess(() => {
-                            document.querySelectorAll('.category-pill').forEach(b => b.classList.remove(
-                            'active'));
-                            btn.classList.add('active');
-                            document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.toggle(
-                                'active', b.dataset.cat === cat));
-                            filterByCategory(cat);
-                        });
-                        return;
-                    }
-                    document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.toggle('active', b
-                        .dataset.cat === cat));
-                    filterByCategory(cat);
-                };
-            });
-
-            // Bottom categories
-            document.querySelectorAll('.cat-badge-lg').forEach(btn => {
-                btn.onclick = () => {
-                    const cat = btn.dataset.cat;
-                    if (cat === 'adult' && !localStorage.getItem('adultVerified')) {
-                        checkAdultAccess(() => {
-                            document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.remove(
-                            'active'));
-                            btn.classList.add('active');
-                            document.querySelectorAll('.category-pill').forEach(b => b.classList.toggle(
-                                'active', b.dataset.cat === cat));
-                            filterByCategory(cat);
-                        });
-                        return;
-                    }
-                    document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    document.querySelectorAll('.category-pill').forEach(b => b.classList.toggle('active', b
-                        .dataset.cat === cat));
-                    filterByCategory(cat);
-                };
-            });
 
             // Modal controls
             closeModal.onclick = closeJokeModalFn;
@@ -2835,7 +3150,6 @@
                     pendingAdultAction();
                     pendingAdultAction = null;
                 }
-                // if currently on adult category, re-render
                 if (currentCategory === 'adult') {
                     filterByCategory('adult');
                 }
@@ -2898,212 +3212,5 @@
         document.head.appendChild(styleSheet);
     </script>
 
-    <!-- ════════════════════════════════════════════════════════════════
-    DIRTY JOKES — ADD THESE TO THE `adult` ARRAY IN THE JOKES OBJECT
-    ════════════════════════════════════════════════════════════════ -->
-    <!--
-    Copy and paste the following lines into the `adult: [` array inside the JOKES object.
-    Replace the existing `{ id: 'ad1', text: "..." }` with these, or add them after it.
-
-    { id: 'ad2', text: "What's the difference between a G-spot and a golf ball? A guy will actually spend 20 minutes looking for a golf ball." },
-    { id: 'ad3', text: "What do you call a woman who knows where her husband is at all times? A widow." },
-    { id: 'ad4', text: "What does a gynecologist and a photographer have in common? They both get to develop their own negatives." },
-    { id: 'ad5', text: "Why do men like to watch porn? It's the only time they get to see a woman who can't stop staring at their face." },
-    { id: 'ad6', text: "Why did the woman divorce her husband? Because he kept putting the toilet seat down." },
-    { id: 'ad7', text: "What's the difference between a husband and a boyfriend? 30 minutes." },
-    { id: 'ad8', text: "What's the difference between a man and a pub? A pub will stop serving you at 11 PM." },
-    { id: 'ad9', text: "Why did the man bring a ladder to the bar? He heard the drinks were on the house." },
-    { id: 'ad10', text: "What do you call a man who can't stand? A disappointment." },
-    { id: 'ad11', text: "What's a woman's favorite kind of man? A man with a job." },
-    { id: 'ad12', text: "Why don't men like to ask for directions? Because they already know everything." },
-    { id: 'ad13', text: "What's the longest time a man can last? 9 months, until the baby is born." },
-    { id: 'ad14', text: "Why do women live longer than men? Because they have more experience dealing with pain." },
-    { id: 'ad15', text: "What do you call a man who's always right? A bachelor." },
-    { id: 'ad16', text: "Why did the woman cross the road? She didn't, she was already on the other side." },
-    { id: 'ad17', text: "What do you call a woman who's an expert at filing? A secretary." },
-    { id: 'ad18', text: "What did the man say to his wife when she asked him to take out the trash? 'I'll do it tomorrow.'" },
-    { id: 'ad19', text: "Why do men like cars? Because they can fix them." },
-    { id: 'ad20', text: "Why did the man bring a map to the bedroom? He wanted to find the clitoris." },
-    { id: 'ad21', text: "What's the difference between a man and a wheel? The wheel doesn't squeak." },
-    { id: 'ad22', text: "Why did the man get a divorce? Because he liked his wife too much to stay." },
-    { id: 'ad23', text: "What do you call a woman who's always angry? A wife." },
-    { id: 'ad24', text: "Why did the man bring a stopwatch to the bedroom? He wanted to see how long he could last." },
-    { id: 'ad25', text: "Why do men have such a hard time understanding women? They speak two different languages." },
-    { id: 'ad26', text: "What's the difference between a man and a woman? A man will pay $2 for a $1 item he wants. A woman will pay $1 for a $2 item she doesn't want." },
-    { id: 'ad27', text: "Why did the man stare at the can of orange juice? Because it said 'concentrate'." },
-    { id: 'ad28', text: "Why do women talk so much? They have to, to keep up with the men." },
-    { id: 'ad29', text: "What do you call a man who can't stop talking? A woman." },
-    { id: 'ad30', text: "Why did the man go to the doctor? He was feeling a little bit dirty." },
-    { id: 'ad31', text: "What's a man's definition of foreplay? The 10 minutes before the 5 minutes of sex." },
-    { id: 'ad32', text: "Why did the woman take her husband to the bar? Because he needed a drink." },
-    { id: 'ad33', text: "What do you call a man who's always tired? A father." },
-    { id: 'ad34', text: "Why do men like to play video games? Because it's the only time they can control something." },
-    { id: 'ad35', text: "What's the difference between a man and a baby? A baby eventually stops crying." },
-    { id: 'ad36', text: "Why did the man get a promotion? Because he was the only one who knew how to use the coffee machine." },
-    { id: 'ad37', text: "What do you call a woman who's a great listener? Married." },
-    { id: 'ad38', text: "Why do men hate being wrong? Because they never are." },
-    { id: 'ad39', text: "What's a man's favorite word? 'Yes'." },
-    { id: 'ad40', text: "Why did the woman slap the man? Because he was trying to understand her." },
-    { id: 'ad41', text: "What's the difference between a man and a couch? A couch doesn't ask for sex every night." },
-    { id: 'ad42', text: "Why don't men listen? Because they're too busy thinking about themselves." },
-    { id: 'ad43', text: "What do you call a man who's a good listener? A unicorn." },
-    { id: 'ad44', text: "Why did the man bring a ladder to the bar? He heard the drinks were on the house." },
-    { id: 'ad45', text: "What's a woman's favorite thing about a man? His wallet." },
-    { id: 'ad46', text: "Why did the man cross the road? He was trying to get to the other side of the bar." },
-    { id: 'ad47', text: "What do you call a man who's a great cook? A chef." },
-    { id: 'ad48', text: "Why do men like to be alone? Because they're thinking about important things." },
-    { id: 'ad49', text: "What's the difference between a man and a woman? A woman can do everything a man can do, except in heels." },
-    { id: 'ad50', text: "Why did the woman leave her husband? He kept forgetting her birthday." },
-    { id: 'ad51', text: "Why do men hate shopping? Because they have to try things on." },
-    { id: 'ad52', text: "What do you call a woman who's a great business woman? A CEO." },
-    { id: 'ad53', text: "Why did the man stop listening? He was already tuning out." },
-    { id: 'ad54', text: "What's the difference between a man and a puppy? A puppy will eventually stop chewing on your shoes." },
-    { id: 'ad55', text: "Why did the woman get a dog? She wanted a man who would listen to her." },
-    { id: 'ad56', text: "What do you call a man who's always right? A problem." },
-    { id: 'ad57', text: "Why did the man bring a map to the bedroom? He wanted to find the clitoris." },
-    { id: 'ad58', text: "What's the difference between a man and a woman? A man will buy a $500 suit for $300." },
-    { id: 'ad59', text: "Why do women hate men? Because they don't listen." },
-    { id: 'ad60', text: "What do you call a woman who's a great driver? A woman." },
-    { id: 'ad61', text: "Why did the man get a divorce? He wasn't satisfied." },
-    { id: 'ad62', text: "What's a man's favorite position? On the couch watching TV." },
-    { id: 'ad63', text: "Why do men like to watch sports? Because it's the only time they can yell at the TV." },
-    { id: 'ad64', text: "What do you call a woman who's a great cook? A wife." },
-    { id: 'ad65', text: "Why did the woman leave her husband? Because he wouldn't stop talking." },
-    { id: 'ad66', text: "What's the difference between a man and a baby? A baby will eventually grow up." },
-    { id: 'ad67', text: "Why do men like to play golf? Because they can't talk while playing." },
-    { id: 'ad68', text: "What do you call a man who's a great lover? A myth." },
-    { id: 'ad69', text: "Why did the man go to the bar? He wanted to get a drink." },
-    { id: 'ad70', text: "What's a woman's favorite thing about a man? His muscles." },
-    { id: 'ad71', text: "Why did the man get a tattoo? He wanted to get a permanent reminder." },
-    { id: 'ad72', text: "What do you call a woman who's a great writer? A novelist." },
-    { id: 'ad73', text: "Why did the man stop talking? He was finished." },
-    { id: 'ad74', text: "What's the difference between a man and a woman? A man will always try to fix things." },
-    { id: 'ad75', text: "Why do women like flowers? Because they die." },
-    { id: 'ad76', text: "What do you call a man who's a great dancer? A show-off." },
-    { id: 'ad77', text: "Why did the woman get a divorce? She was tired of being right all the time." },
-    { id: 'ad78', text: "What's a man's favorite thing about a woman? Her silence." },
-    { id: 'ad79', text: "Why do men like to fish? Because they can be alone." },
-    { id: 'ad80', text: "What do you call a woman who's a great athlete? A champion." },
-    { id: 'ad81', text: "Why did the man get a job? He needed money." },
-    { id: 'ad82', text: "What's the difference between a man and a woman? A woman will always ask for directions." },
-    { id: 'ad83', text: "Why do men hate shopping? Because they have to carry the bags." },
-    { id: 'ad84', text: "What do you call a man who's a great singer? A pop star." },
-    { id: 'ad85', text: "Why did the woman leave her husband? Because he wouldn't take out the trash." },
-    { id: 'ad86', text: "What's a woman's favorite thing about a man? His sense of humor." },
-    { id: 'ad87', text: "Why do men like to watch movies? Because they can relate to the action." },
-    { id: 'ad88', text: "What do you call a woman who's a great singer? A diva." },
-    { id: 'ad89', text: "Why did the man get a pet? He wanted a companion." },
-    { id: 'ad90', text: "What's the difference between a man and a woman? A woman will always have the last word." },
-    { id: 'ad91', text: "Why do women like to talk? Because they have to keep up with the men." },
-    { id: 'ad92', text: "What do you call a man who's a great writer? A poet." },
-    { id: 'ad93', text: "Why did the man get a divorce? He couldn't stand the pressure." },
-    { id: 'ad94', text: "What's a man's favorite thing about a woman? Her cooking." },
-    { id: 'ad95', text: "Why do men like to play poker? Because they can bluff." },
-    { id: 'ad96', text: "What do you call a woman who's a great lawyer? A judge." },
-    { id: 'ad97', text: "Why did the woman leave her husband? Because he wouldn't stop watching TV." },
-    { id: 'ad98', text: "What's the difference between a man and a woman? A woman will always notice the details." },
-    { id: 'ad99', text: "Why do men like to argue? Because they like to be right." },
-    { id: 'ad100', text: "What do you call a man who's a great cook? A chef." },
-    { id: 'ad101', text: "Why did the man stare at the can of orange juice? Because it said 'concentrate'." },
-    { id: 'ad102', text: "What's the difference between a man and a woman? A man will pay $2 for a $1 item he wants. A woman will pay $1 for a $2 item she doesn't want." },
-    { id: 'ad103', text: "Why do women talk so much? They have to, to keep up with the men." },
-    { id: 'ad104', text: "What do you call a man who can't stop talking? A woman." },
-    { id: 'ad105', text: "Why did the man go to the doctor? He was feeling a little bit dirty." },
-    { id: 'ad106', text: "What's a man's definition of foreplay? The 10 minutes before the 5 minutes of sex." },
-    { id: 'ad107', text: "Why did the woman take her husband to the bar? Because he needed a drink." },
-    { id: 'ad108', text: "What do you call a man who's always tired? A father." },
-    { id: 'ad109', text: "Why do men like to play video games? Because it's the only time they can control something." },
-    { id: 'ad110', text: "What's the difference between a man and a baby? A baby eventually stops crying." },
-    { id: 'ad111', text: "Why did the man get a promotion? Because he was the only one who knew how to use the coffee machine." },
-    { id: 'ad112', text: "What do you call a woman who's a great listener? Married." },
-    { id: 'ad113', text: "Why do men hate being wrong? Because they never are." },
-    { id: 'ad114', text: "What's a man's favorite word? 'Yes'." },
-    { id: 'ad115', text: "Why did the woman slap the man? Because he was trying to understand her." },
-    { id: 'ad116', text: "What's the difference between a man and a couch? A couch doesn't ask for sex every night." },
-    { id: 'ad117', text: "Why don't men listen? Because they're too busy thinking about themselves." },
-    { id: 'ad118', text: "What do you call a man who's a good listener? A unicorn." },
-    { id: 'ad119', text: "Why did the man bring a ladder to the bar? He heard the drinks were on the house." },
-    { id: 'ad120', text: "What's a woman's favorite thing about a man? His wallet." },
-    { id: 'ad121', text: "Why did the man cross the road? He was trying to get to the other side of the bar." },
-    { id: 'ad122', text: "What do you call a man who's a great cook? A chef." },
-    { id: 'ad123', text: "Why do men like to be alone? Because they're thinking about important things." },
-    { id: 'ad124', text: "What's the difference between a man and a woman? A woman can do everything a man can do, except in heels." },
-    { id: 'ad125', text: "Why did the woman leave her husband? He kept forgetting her birthday." },
-    { id: 'ad126', text: "Why do men hate shopping? Because they have to try things on." },
-    { id: 'ad127', text: "What do you call a woman who's a great business woman? A CEO." },
-    { id: 'ad128', text: "Why did the man stop listening? He was already tuning out." },
-    { id: 'ad129', text: "What's the difference between a man and a puppy? A puppy will eventually stop chewing on your shoes." },
-    { id: 'ad130', text: "Why did the woman get a dog? She wanted a man who would listen to her." },
-    { id: 'ad131', text: "What do you call a man who's always right? A problem." },
-    { id: 'ad132', text: "Why did the man bring a map to the bedroom? He wanted to find the clitoris." },
-    { id: 'ad133', text: "What's the difference between a man and a woman? A man will buy a $500 suit for $300." },
-    { id: 'ad134', text: "Why do women hate men? Because they don't listen." },
-    { id: 'ad135', text: "What do you call a woman who's a great driver? A woman." },
-    { id: 'ad136', text: "Why did the man get a divorce? He wasn't satisfied." },
-    { id: 'ad137', text: "What's a man's favorite position? On the couch watching TV." },
-    { id: 'ad138', text: "Why do men like to watch sports? Because it's the only time they can yell at the TV." },
-    { id: 'ad139', text: "What do you call a woman who's a great cook? A wife." },
-    { id: 'ad140', text: "Why did the woman leave her husband? Because he wouldn't stop talking." },
-    { id: 'ad141', text: "What's the difference between a man and a baby? A baby will eventually grow up." },
-    { id: 'ad142', text: "Why do men like to play golf? Because they can't talk while playing." },
-    { id: 'ad143', text: "What do you call a man who's a great lover? A myth." },
-    { id: 'ad144', text: "Why did the man go to the bar? He wanted to get a drink." },
-    { id: 'ad145', text: "What's a woman's favorite thing about a man? His muscles." },
-    { id: 'ad146', text: "Why did the man get a tattoo? He wanted to get a permanent reminder." },
-    { id: 'ad147', text: "What do you call a woman who's a great writer? A novelist." },
-    { id: 'ad148', text: "Why did the man stop talking? He was finished." },
-    { id: 'ad149', text: "What's the difference between a man and a woman? A man will always try to fix things." },
-    { id: 'ad150', text: "Why do women like flowers? Because they die." },
-    { id: 'ad151', text: "What do you call a man who's a great dancer? A show-off." },
-    { id: 'ad152', text: "Why did the woman get a divorce? She was tired of being right all the time." },
-    { id: 'ad153', text: "What's a man's favorite thing about a woman? Her silence." },
-    { id: 'ad154', text: "Why do men like to fish? Because they can be alone." },
-    { id: 'ad155', text: "What do you call a woman who's a great athlete? A champion." },
-    { id: 'ad156', text: "Why did the man get a job? He needed money." },
-    { id: 'ad157', text: "What's the difference between a man and a woman? A woman will always ask for directions." },
-    { id: 'ad158', text: "Why do men hate shopping? Because they have to carry the bags." },
-    { id: 'ad159', text: "What do you call a man who's a great singer? A pop star." },
-    { id: 'ad160', text: "Why did the woman leave her husband? Because he wouldn't take out the trash." },
-    { id: 'ad161', text: "What's a woman's favorite thing about a man? His sense of humor." },
-    { id: 'ad162', text: "Why do men like to watch movies? Because they can relate to the action." },
-    { id: 'ad163', text: "What do you call a woman who's a great singer? A diva." },
-    { id: 'ad164', text: "Why did the man get a pet? He wanted a companion." },
-    { id: 'ad165', text: "What's the difference between a man and a woman? A woman will always have the last word." },
-    { id: 'ad166', text: "Why do women like to talk? Because they have to keep up with the men." },
-    { id: 'ad167', text: "What do you call a man who's a great writer? A poet." },
-    { id: 'ad168', text: "Why did the man get a divorce? He couldn't stand the pressure." },
-    { id: 'ad169', text: "What's a man's favorite thing about a woman? Her cooking." },
-    { id: 'ad170', text: "Why do men like to play poker? Because they can bluff." },
-    { id: 'ad171', text: "What do you call a woman who's a great lawyer? A judge." },
-    { id: 'ad172', text: "Why did the woman leave her husband? Because he wouldn't stop watching TV." },
-    { id: 'ad173', text: "What's the difference between a man and a woman? A woman will always notice the details." },
-    { id: 'ad174', text: "Why do men like to argue? Because they like to be right." },
-    { id: 'ad175', text: "What do you call a man who's a great cook? A chef." },
-    { id: 'ad176', text: "Why did the man stare at the can of orange juice? Because it said 'concentrate'." },
-    { id: 'ad177', text: "What's the difference between a man and a woman? A man will pay $2 for a $1 item he wants. A woman will pay $1 for a $2 item she doesn't want." },
-    { id: 'ad178', text: "Why do women talk so much? They have to, to keep up with the men." },
-    { id: 'ad179', text: "What do you call a man who can't stop talking? A woman." },
-    { id: 'ad180', text: "Why did the man go to the doctor? He was feeling a little bit dirty." },
-    { id: 'ad181', text: "What's a man's definition of foreplay? The 10 minutes before the 5 minutes of sex." },
-    { id: 'ad182', text: "Why did the woman take her husband to the bar? Because he needed a drink." },
-    { id: 'ad183', text: "What do you call a man who's always tired? A father." },
-    { id: 'ad184', text: "Why do men like to play video games? Because it's the only time they can control something." },
-    { id: 'ad185', text: "What's the difference between a man and a baby? A baby eventually stops crying." },
-    { id: 'ad186', text: "Why did the man get a promotion? Because he was the only one who knew how to use the coffee machine." },
-    { id: 'ad187', text: "What do you call a woman who's a great listener? Married." },
-    { id: 'ad188', text: "Why do men hate being wrong? Because they never are." },
-    { id: 'ad189', text: "What's a man's favorite word? 'Yes'." },
-    { id: 'ad190', text: "Why did the woman slap the man? Because he was trying to understand her." },
-    { id: 'ad191', text: "What's the difference between a man and a couch? A couch doesn't ask for sex every night." },
-    { id: 'ad192', text: "Why don't men listen? Because they're too busy thinking about themselves." },
-    { id: 'ad193', text: "What do you call a man who's a good listener? A unicorn." },
-    { id: 'ad194', text: "Why did the man bring a ladder to the bar? He heard the drinks were on the house." },
-    { id: 'ad195', text: "What's a woman's favorite thing about a man? His wallet." },
-    { id: 'ad196', text: "Why did the man cross the road? He was trying to get to the other side of the bar." },
-    { id: 'ad197', text: "What do you call a man who's a great cook? A chef." },
-    { id: 'ad198', text: "Why do men like to be alone? Because they're thinking about important things." },
-    { id: 'ad199', text: "What's the difference between a man and a woman? A woman can do everything a man can do, except in heels." },
-    { id: 'ad200', text: "Why did the woman leave her husband? He kept forgetting her birthday." },
-    -->
 </body>
 </html>
