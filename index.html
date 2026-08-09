@@ -724,7 +724,7 @@
         <!-- REFRESH ZONE -->
         <div class="refresh-zone">
             <button class="refresh-btn" id="refreshBtn"><i class="fas fa-sync-alt"></i> Refresh Jokes</button>
-            <div class="refresh-hint">↻ 20 fresh jokes · includes 1 dirty joke · categories vary</div>
+            <div class="refresh-hint">↻ 20 fresh jokes · categories vary</div>
         </div>
 
         <!-- BOTTOM CATEGORIES -->
@@ -2924,17 +2924,7 @@
                 const card = document.createElement('div');
                 card.className = 'joke-card';
                 const emojiMap = {
-                    general: '😂',
-                    dad: '👨',
-                    dark: '💀',
-                    food: '🍕',
-                    kids: '🧸',
-                    programming: '💻',
-                    romantic: '❤️',
-                    adult: '🔞',
-                    animal: '🐾',
-                    school: '📚',
-                    work: '💼'
+'
                 };
                 const emoji = emojiMap[joke.cat] || '🤣';
                 card.innerHTML = `
