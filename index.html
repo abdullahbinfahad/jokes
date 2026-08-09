@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5" />
-    <title>JokeVerse — Random Jokes</title>
+    <title>JokeVerse — No Repeat Jokes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -158,45 +158,6 @@
             max-width: 1280px;
             margin: 0 auto;
             padding: 20px 20px 40px;
-        }
-
-        /* ─── CATEGORY PILLS (top) ─── */
-        .category-strip {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-            justify-content: center;
-        }
-        .category-pill {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--glass-border);
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: 0.25s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            letter-spacing: 0.3px;
-        }
-        .category-pill:hover {
-            background: rgba(168, 85, 247, 0.12);
-            border-color: var(--accent);
-            color: var(--text);
-            transform: translateY(-2px);
-        }
-        .category-pill.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #fff;
-            box-shadow: 0 4px 20px var(--accent-glow);
-        }
-        .category-pill i {
-            font-size: 0.7rem;
         }
 
         /* ─── JOKE GRID ─── */
@@ -606,14 +567,6 @@
             .app-container {
                 padding: 12px 12px 30px;
             }
-            .category-strip {
-                gap: 5px;
-                margin-bottom: 16px;
-            }
-            .category-pill {
-                font-size: 0.65rem;
-                padding: 4px 12px;
-            }
             .refresh-btn {
                 padding: 12px 32px;
                 font-size: 0.85rem;
@@ -706,7 +659,7 @@
             <div class="brand">
                 <i class="fas fa-bolt"></i>
                 JokeVerse
-                <span>· random laughs</span>
+                <span>· no repeats</span>
             </div>
             <div class="header-stats">
                 <span class="stat"><i class="fas fa-fire"></i> <span id="totalJokes">0</span></span>
@@ -715,19 +668,16 @@
             </div>
         </header>
 
-        <!-- TOP CATEGORY PILLS -->
-        <div class="category-strip" id="topCategories"></div>
-
         <!-- JOKE GRID -->
         <div class="joke-grid" id="jokeGrid"></div>
 
         <!-- REFRESH ZONE -->
         <div class="refresh-zone">
             <button class="refresh-btn" id="refreshBtn"><i class="fas fa-sync-alt"></i> Refresh Jokes</button>
-            <div class="refresh-hint">↻ 20 fresh jokes · categories vary</div>
+            <div class="refresh-hint">↻ fresh set · never the same joke twice (until you've seen them all)</div>
         </div>
 
-        <!-- BOTTOM CATEGORIES -->
+        <!-- BOTTOM CATEGORIES (only category bar) -->
         <div class="bottom-categories" id="bottomCategories"></div>
 
     </div>
@@ -2788,7 +2738,7 @@
                 { id: 'w53', text: "Why did the employee get a new ID badge? He lost his old one." },
                 { id: 'w54', text: "What do you call a meeting that's productive? A miracle." },
                 { id: 'w55', text: "Why did the boss buy new chairs? He wanted to keep employees seated." },
-            ],
+           ],
         };
 
         // ─── Build flat list with category tags ───
@@ -2908,7 +2858,6 @@
         const toast = document.querySelector('.toast');
         const toastMsg = $('toastMsg');
         const themeToggle = $('themeToggle');
-        const topCategories = $('topCategories');
         const bottomCategories = $('bottomCategories');
 
         // ============================================================
@@ -2924,7 +2873,17 @@
                 const card = document.createElement('div');
                 card.className = 'joke-card';
                 const emojiMap = {
-'
+                    general: '😂',
+                    dad: '👨',
+                    dark: '💀',
+                    food: '🍕',
+                    kids: '🧸',
+                    programming: '💻',
+                    romantic: '❤️',
+                    adult: '🔞',
+                    animal: '🐾',
+                    school: '📚',
+                    work: '💼'
                 };
                 const emoji = emojiMap[joke.cat] || '🤣';
                 card.innerHTML = `
@@ -2948,10 +2907,7 @@
 
         function filterByCategory(cat) {
             currentCategory = cat;
-            // update pills
-            document.querySelectorAll('.category-pill').forEach(p => {
-                p.classList.toggle('active', p.dataset.cat === cat);
-            });
+            // update bottom categories
             document.querySelectorAll('.cat-badge-lg').forEach(p => {
                 p.classList.toggle('active', p.dataset.cat === cat);
             });
@@ -2996,33 +2952,7 @@
                 school: '📚',
                 work: '💼'
             };
-            // Top pills
-            topCategories.innerHTML = '';
-            catList.forEach(cat => {
-                const pill = document.createElement('button');
-                pill.className = `category-pill${cat === 'all' ? ' active' : ''}`;
-                pill.dataset.cat = cat;
-                const emoji = emojiMap[cat] || '📌';
-                pill.innerHTML = `${emoji} ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
-                pill.onclick = () => {
-                    if (cat === 'adult' && !localStorage.getItem('adultVerified')) {
-                        checkAdultAccess(() => {
-                            document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
-                            pill.classList.add('active');
-                            document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-                            filterByCategory(cat);
-                        });
-                        return;
-                    }
-                    document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
-                    pill.classList.add('active');
-                    document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-                    filterByCategory(cat);
-                };
-                topCategories.appendChild(pill);
-            });
-
-            // Bottom categories
+            // Only bottom categories
             bottomCategories.innerHTML = '';
             catList.forEach(cat => {
                 const badge = document.createElement('button');
@@ -3035,14 +2965,12 @@
                         checkAdultAccess(() => {
                             document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.remove('active'));
                             badge.classList.add('active');
-                            document.querySelectorAll('.category-pill').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
                             filterByCategory(cat);
                         });
                         return;
                     }
                     document.querySelectorAll('.cat-badge-lg').forEach(b => b.classList.remove('active'));
                     badge.classList.add('active');
-                    document.querySelectorAll('.category-pill').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
                     filterByCategory(cat);
                 };
                 bottomCategories.appendChild(badge);
@@ -3113,7 +3041,7 @@
             // Loader
             setTimeout(() => document.getElementById('loader').classList.add('hidden'), 600);
 
-            // Build category UI
+            // Build category UI (only bottom)
             buildCategoryUI();
 
             // Initial load
@@ -3149,7 +3077,6 @@
                 ageModal.classList.remove('active');
                 pendingAdultAction = null;
                 if (currentCategory === 'adult') {
-                    document.querySelector('.category-pill[data-cat="all"]')?.click();
                     document.querySelector('.cat-badge-lg[data-cat="all"]')?.click();
                 }
                 showToast('Access denied. 😅');
